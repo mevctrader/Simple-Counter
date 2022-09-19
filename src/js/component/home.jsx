@@ -1,26 +1,45 @@
 import React from "react";
+import { Cardnumber } from "./Cardnumber.jsx";
+import PropTypes from 'prop-types';
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+const Home = (props) => {
+	return(
 
-//create your first component
-const Home = () => {
-	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<div className="text-center row bg-dark">
+
+			<div className="col-2">
+				<div className="card">
+					<div className="card-body">
+						<img src='https://cdn-icons-png.flaticon.com/512/109/109613.png' height='35px'></img>
+					</div>
+				</div>
+			</div>
+
+			<div className="col-2">
+				<Cardnumber unit={Math.floor(props.seconds/10000)%10}/>
+			</div>
+
+			<div className="col-2">
+				<Cardnumber unit={Math.floor(props.seconds/1000)%10}/>
+			</div>
+
+			<div className="col-2">
+				<Cardnumber unit={Math.floor(props.seconds/100)%10}/>
+			</div>
+
+			<div className="col-2">
+				<Cardnumber unit={Math.floor(props.seconds/10)%10}/>
+			</div>
+
+			<div className="col-2">
+				<Cardnumber unit={Math.floor(props.seconds/1)%10}/>
+			</div>
 		</div>
 	);
 };
+
+Home.PropTypes = {
+	seconds: PropTypes.number,
+}
 
 export default Home;
